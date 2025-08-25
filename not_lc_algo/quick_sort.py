@@ -1,21 +1,8 @@
 """
-[ 已处理且≤pivot的元素 | 已处理且>pivot的元素 | 未处理的元素 | pivot ]
+[ 已处理且大于pivot的元素 | 已处理且小于等于pivot的元素 | 未处理的元素 | pivot ]
   l         j-1         j         i-1         i         r-1       r
 """
 
-"""
-•
-​​索引 l到 j-1​​：所有​​小于等于​​基准值的元素
-
-•
-​​索引 j到 i-1​​：所有​​大于​​基准值的元素
-
-•
-​​索引 i到 r-1​​：尚未处理的元素
-
-•
-​​索引 r​​：基准值本身
-"""
 
 def quick_sort(lst, l, r):
     if l >= r:
@@ -33,3 +20,8 @@ def patition(lst, l, r):
             j += 1
     lst[j], lst[r] = lst[r], lst[j]
     return j
+
+if __name__ == '__main__':
+    lst = [1,3,2,5,3,6,2,7]
+    quick_sort(lst,0,len(lst)-1)
+    print(lst)

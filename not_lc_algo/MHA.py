@@ -27,7 +27,7 @@ class MHA(nn.Module):
         
         score = torch.matmul(Q, K.transpose(2, 3)) / torch.sqrt(torch.tensor(self.head_dim), dtype=torch.float32)
         
-        if mask is None:
+        if mask is not None:
             mask = mask.unsqueeze(1)
             score = score.masked_fill(mask == 0, -1e9)
         score = F.softmax(score, dim=-1)
